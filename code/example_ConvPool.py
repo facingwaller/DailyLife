@@ -49,3 +49,25 @@ with tf.Session() as sess:
 
     print("convoluted_M: \n", convoluted_M)
     print("pooled_M: \n", pooled_M)
+
+
+"""
+运行结果：
+Matrix shape is:  (3, 3, 1)
+Matrix shape is:  (3, 3)
+
+convoluted_M: 
+ [[[[ 7.]
+   [ 1.]]
+
+  [[-1.]
+   [-1.]]]]
+
+pooled_M: 
+ [[[[ 0.25]
+   [ 0.5 ]]
+
+  [[ 1.  ]
+   [-2.  ]]]]
+
+"""
