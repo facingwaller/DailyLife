@@ -39,7 +39,7 @@ conv = tf.nn.conv2d(x, filter_weight, strides=[1, 2, 2, 1], padding='SAME')
 bias = tf.nn.bias_add(conv, biases)
 pool = tf.nn.avg_pool(x, ksize=[1, 2, 2, 1], strides=[1,2,2,1], padding='SAME')
 
-# 创建一个对话来运行
+# 创建一个会话来运行
 with tf.Session() as sess:
     # 下面的两句初始化可以换成tf.global_variables_initializer().run
     INIT = tf.global_variables_initializer()
