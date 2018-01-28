@@ -1,10 +1,13 @@
 import tensorflow as tf
 
+
 # Numpy是一个科学计算工具包，这里通过Numpy工具包生成模拟数据集
 from numpy.random import RandomState
 
+
 # 定义训练数据batch的大小
 batch_size = 8
+
 
 # 定义神经网络的参数,stddev为标准差
 w1 = tf.Variable(tf.random_normal([2, 3], stddev=1, seed=1))
@@ -17,9 +20,11 @@ w2 = tf.Variable(tf.random_normal([3, 1], stddev=1, seed=1))
 x = tf.placeholder(tf.float32, shape=(None, 2), name='x-input')
 y_ = tf.placeholder(tf.float32, shape=(None, 1), name='y-input')
 
+
 # 定义神经网络的前向传播过程
 a = tf.matmul(x, w1)
 y = tf.matmul(a, w2)
+
 
 # 定义损失函数和反向传播的算法。
 # 损失函数
@@ -28,6 +33,7 @@ cross_entropy = -tf.reduce_mean(
 # 反向传播算法
 train_step = tf.train.AdamOptimizer(0.001).minimize(cross_entropy)
 
+
 # 通过随机数生成一个模拟数据集。
 rdm = RandomState(1)
 dataset_size = 128
@@ -35,6 +41,7 @@ X = rdm.rand(dataset_size, 2)
 # 定义规则来给出样本的标签。在这里x1+x2<1的样例就认为是正样本（比如零件合格），
 # 而其他为负样本（比如零件不合格）。而在这，具体而言，就是0为负样本，1为正样本
 Y = [[int(x1 + x2 < 1)] for (x1, x2) in X]
+
 
 # 创建一个会话来运行Tensorflow程序。
 with tf.Session() as sess:
@@ -80,10 +87,10 @@ with tf.Session() as sess:
 
     print(sess.run(w1))
     print(sess.run(w2))
-"""
-w1 = [[-1.9618274, 2.58235407, 1.68203783]
-      [-3.4681716, 1.06982327, 2.11788988]]
-w2 = [[-1.8247149], [2.68546653], [1.41819501]]
+    """
+    w1 = [[-1.9618274, 2.58235407, 1.68203783]
+          [-3.4681716, 1.06982327, 2.11788988]]
+    w2 = [[-1.8247149], [2.68546653], [1.41819501]]
 
-可以发现俩个参数的取值已经发生了变化，这就是训练的结果。它使得这个神经网络可以更好的拟合提供的训练数据。
-"""
+    可以发现俩个参数的取值已经发生了变化，这就是训练的结果。它使得这个神经网络可以更好的拟合提供的训练数据。
+    """
