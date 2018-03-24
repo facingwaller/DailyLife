@@ -1,5 +1,5 @@
 data_helpe.py/
-train.py
+train.py/
 text_cnn.py/
 eval.py
 以上四个分别为text-cnn的原始代码，其中train，text_cnn为改动过的
