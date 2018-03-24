@@ -10,5 +10,5 @@ t_cnn_label.py     建立标签
 t_wiki_process.py  对wiki处理，建立字-字向量字典，并且匹配中文
 
 Atr.txt:所有属性
-T_dat.txt :去掉重复后的属性
+T_dat.txt :去掉重复后的属性,
 只用到这两个文件
