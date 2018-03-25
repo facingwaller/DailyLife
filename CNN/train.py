@@ -78,7 +78,8 @@ print("max_document_length:",max_document_length)
 dir = t_wiki_process.get_wiki_dic("D:\\tensorflow\wiki.vector")
 vocab_dir = {}
 
-# 建立词汇表（字典形式）
+# 建立词汇表（字典形式，｛字：number｝）
+# 词汇表从1开始，因为建立单词索引表不够长的填0，所以从1开始
 count = 0
 for key in dir:
     vocab_dir[key] = count + 1
@@ -104,7 +105,6 @@ print("##########################")
 print(x.shape)
 print(x)
 print("##########################")
-print("time"+"\t\t"+str(datetime.datetime.now().isoformat()))
 
 # Randomly shuffle data
 np.random.seed(10)    # 运用seed使得每次生成的随机数相同
@@ -223,7 +223,6 @@ with tf.Graph().as_default():
             """
             A single training step
             """
-            # 定义这个字典和下面的sess.run是啥子意思??
             feed_dict = {
               cnn.input_x: x_batch,
               cnn.input_y: y_batch,
