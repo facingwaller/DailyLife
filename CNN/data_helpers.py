@@ -81,7 +81,7 @@ def load_data_and_labels(positive_data_file, negative_data_file):
 def load_data_and_labels_QA(train_data_path):
 
     # Load data from files
-    dict_data_path = 'D:\\tensorflow\CNN_SHUXIN\T_data.txt'
+    dict_data_path = '../data/T_data.txt'
     train_data = open(train_data_path, 'r', encoding='utf-8').readlines()
     input_data = [s.strip() for s in train_data]  #  s.strip(rm) 当rm为空时，默认删除字符串首尾空白符（包括'\n', '\r',  '\t',  ' ')
     x_text = input_data

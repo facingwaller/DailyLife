@@ -20,7 +20,7 @@ import t_wiki_process
 #  其次该函数带有输出的功能？？？？
 # 数据集里10%为验证集；POS正例；NEG反例
 tf.flags.DEFINE_float("dev_sample_percentage", .1, "Percentage of the training data to use for validation")   # 10%交叉验证集
-tf.flags.DEFINE_string("train_data", "D:\\tensorflow\Atr_fortest.txt", "经过提取后只含全部属性的数据.")
+tf.flags.DEFINE_string("train_data", "../data/Atr_fortest.txt", "经过提取后只含全部属性的数据.")
 # tf.flags.DEFINE_string("negative_data_file", "./data/rt-polaritydata/rt-polarity.neg-1", "Data source for the negative data.")
 
 # Model Hyperparameters
@@ -75,7 +75,7 @@ print("time"+"\t\t"+str(datetime.datetime.now().isoformat()))
 ##########################################################
 max_document_length = max([len(x) for x in x_text])  # 获取单行的最大的长度
 print("max_document_length:",max_document_length)
-dir = t_wiki_process.get_wiki_dic("D:\\tensorflow\wiki.vector")
+dir = t_wiki_process.get_wiki_dic("../data/wiki.vector")
 vocab_dir = {}
 
 # 建立词汇表（字典形式，｛字：number｝）
@@ -91,7 +91,7 @@ for word in x_text:
     index =[]
     size = len(word)
     for i in word:
-        number = vocab_dir[i]
+        number = vocab_dir.get('A')  # 临时该了
         index.append(number)
         #print(index)
     if size != max_document_length:
