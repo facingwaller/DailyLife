@@ -16,8 +16,7 @@ import t_wiki_process
 
 # Data loading params
 # 注释参考这篇文章，http://blog.csdn.net/github_38414650/article/details/74019595
-# tf.flags.DEFINE_float/string(flag_name, default_value, docstring(文档字符串)), 对该函数的理解是把原始文件的名字重新命名为data_helps里面所需要的文件名
-#  其次该函数带有输出的功能？？？？
+# tf.flags.DEFINE_float/string(flag_name, default_value, docstring(文档字符串)), 对该函数的理解是把原始文件的名字重新命名为data_helps里面所需要的文件
 # 数据集里10%为验证集；POS正例；NEG反例
 tf.flags.DEFINE_float("dev_sample_percentage", .1, "Percentage of the training data to use for validation")   # 10%交叉验证集
 tf.flags.DEFINE_string("train_data", "D:\\tensorflow\Atr_fortest.txt", "经过提取后只含全部属性的数据.")
@@ -224,7 +223,6 @@ with tf.Graph().as_default():
             """
             A single training step
             """
-            # 定义这个字典和下面的sess.run是啥子意思??
             feed_dict = {
               cnn.input_x: x_batch,
               cnn.input_y: y_batch,
@@ -263,7 +261,6 @@ with tf.Graph().as_default():
         # Training loop. For each batch...
         for batch in batches:
             x_batch, y_batch = zip(*batch)  # zip（*）反解压,参见网页如上
-            #x_batch = np.array(x_batch)
             train_step(x_batch, y_batch)
             current_step = tf.train.global_step(sess, global_step)  # 计算步骤总数
             if current_step % FLAGS.evaluate_every == 0:  # 每evaluate_every步输出一次验证集的结果，此处为每五次
