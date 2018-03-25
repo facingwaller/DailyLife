@@ -64,11 +64,12 @@ class TextCNN(object):
             wiki_dictionary = t_wiki_process.get_wiki_dic(wiki_data_path)
             count = 0    #暂时输出前三个看效果
             for key in wiki_dictionary:
-                if count < 20309:
+                if count <= 20308:
                     word_embedding = wiki_dictionary[key]
                     wiki_vector.append(word_embedding)
                     count += 1
-            self.embedded_word = wiki_vector
+            self.embedded_word = np.array(wiki_vector)
+            #self.embedded_word = np.array(self.embedded_word)
 
 
             self.embedding = tf.Variable(tf.to_float(self.embedded_word), trainable=True, name="W")
